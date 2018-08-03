@@ -1,7 +1,7 @@
 /* 
  * Class: JTEnvJV
  * 
- * Description: Prints Java Related Environment Variables
+ * Description: Prints Java Various Groups of Environment Variables
  *
  * Usage: gradle installDist
  *        cd build\install\jtenv\lib
