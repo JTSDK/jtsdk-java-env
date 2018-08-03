@@ -1,0 +1,43 @@
+buildscript {
+	ext {
+		commonsVersion = '1.4'
+	}
+
+	repositories {
+		mavenCentral()
+	}
+
+	dependencies {
+		classpath("commons-cli:commons-cli:${commonsVersion}")
+	}
+}
+
+plugins {
+    id 'java'
+    id 'application'
+    id 'eclipse'
+}
+
+// Define the main class for the application
+mainClassName = 'JTEnvJV'
+version = '3.0.1'
+
+jar {
+	from { configurations.compile.collect { it.isDirectory() ? it : zipTree(it) } }
+    manifest {
+        attributes 'Implementation-Title': 'JTSDK Environment CLI App',
+                   'Implementation-Version': version,
+                   'Main-Class': 'com.jtsdk.jtenv.cli.JTEnvJV'
+    }
+}
+
+dependencies {
+	// compile group: 'commons-cli', name: 'commons-cli', version: '1.4'
+    compile 'commons-cli:commons-cli:1.4'
+    testImplementation 'junit:junit:4.12'
+}
+
+// In this section you declare where to find the dependencies of your project
+repositories {
+    mavenCentral()
+}
