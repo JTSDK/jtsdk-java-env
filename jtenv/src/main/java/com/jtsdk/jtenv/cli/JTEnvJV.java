@@ -1,10 +1,11 @@
 /* 
  * Class: JTEnvJV
  * 
- * Desctiption: Prints Java Related Environment Variables
+ * Description: Prints Java Related Environment Variables
  *
- * Usage: javac JTEnvJV.java
- *        java JTEnvJV
+ * Usage: gradle installDist
+ *        cd build\install\jtenv\lib
+ *        java -jar jtenv-3.0.1.jar -h
  * 
  * Date: 7/22/2018
  * 
@@ -12,7 +13,7 @@
  * 
  * Version: 3.0.1
  * 
- * Licesne: GPL-3
+ * License: GPL-3
  * 
  * Dependencies: Apache Commons CLI
  * 
@@ -96,7 +97,7 @@ public class JTEnvJV {
 
 			// Selection List
 			ArrayList<String> selection = new ArrayList<String>();
-			
+
 			// always clean the screen first
 			clearScreen();
 
@@ -143,7 +144,7 @@ public class JTEnvJV {
 				LoopArrayList(systemList);
 				System.exit(0);
 			}
-			
+
 			// jtsdk list
 			if (line.hasOption("jtsdk")) {
 				mainHeader("JTSDK Environment variables");
@@ -157,14 +158,14 @@ public class JTEnvJV {
 				mainHeader("Version Informaiton");
 				System.exit(0);
 			}
-			
+
 			// Null or only one value
 			if (line.getArgs().length == 0 || line.getArgs().length == 1) {
 				mainHeader("Invalid Option");
 				System.err.println("Use " + APP_NAME + " -h for help\n");
 				System.exit(1);
 			}
-			
+
 		} catch (ParseException exp) {
 			mainHeader(exp.getMessage());
 			System.err.println("Parsing failed. Reason: " + exp.getMessage());
