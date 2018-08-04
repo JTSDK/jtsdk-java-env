@@ -1,6 +1,21 @@
+import java.util.Date
+import java.text.SimpleDateFormat
+
+def getCurrentTimestamp ()
+{
+  Date today = new Date ()
+  SimpleDateFormat df = new SimpleDateFormat ("MM-dd-YYYY hh:mm:ss")
+  return df.format (today)
+}
+
+// Build script
 buildscript {
 	ext {
 		commonsVersion = '1.4'
+        myApp = 'JTEnvJV'
+        myAppVersion = '3.0.1'
+        myAuthor = 'Greg Beam, KI7MT'
+        myAppLicense = 'GPL-v3'
 	}
 
 	repositories {
@@ -12,31 +27,39 @@ buildscript {
 	}
 }
 
+// Buildship plugins
 plugins {
     id 'java'
     id 'application'
     id 'eclipse'
 }
 
-// Define the main class for the application
+// Application Data and Console Messages
 mainClassName = 'JTEnvJV'
 version = '3.0.1'
+println ''
+println "Application : ${myApp} ${myAppVersion}" 
+println "Author      : ${myAuthor}" 
+println "License     : ${myAppLicense}" 
+println "Time Stamp  : " + getCurrentTimestamp ()
 
+// Jar file task
 jar {
-	from { configurations.compile.collect { it.isDirectory() ? it : zipTree(it) } }
+    from { configurations.compile.collect { it.isDirectory() ? it : zipTree(it) } }
     manifest {
-        attributes 'Implementation-Title': 'JTSDK Environment CLI App',
+        attributes 'Implementation-Title': 'JTSDK-Tools Environment Application',
                    'Implementation-Version': version,
                    'Main-Class': 'com.jtsdk.jtenv.cli.JTEnvJV'
     }
 }
 
+// List of packge dependencies
 dependencies {
     compile 'commons-cli:commons-cli:1.4'
     testImplementation 'junit:junit:4.12'
 }
 
-// In this section you declare where to find the dependencies of your project
+// Dependency repository
 repositories {
     mavenCentral()
 }
