@@ -11,11 +11,12 @@ def getCurrentTimestamp ()
 // Build script
 buildscript {
 	ext {
-		commonsVersion = '1.4'
-        myApp = 'JTEnvJV'
+        commonsVersion = '1.4'
+        myAppName = 'JTEnvJV'
         myAppVersion = '3.0.1'
-        myAuthor = 'Greg Beam, KI7MT'
+        myAppAuthor = 'Greg Beam, KI7MT'
         myAppLicense = 'GPL-v3'
+        myAppDescription = 'JTSDK-Tools Java Environment Application'
 	}
 
 	repositories {
@@ -35,11 +36,12 @@ plugins {
 }
 
 // Application Data and Console Messages
-mainClassName = 'JTEnvJV'
-version = '3.0.1'
+mainClassName = "${myAppName}"
+version = "${myAppVersion}"
 println ''
-println "Application : ${myApp} ${myAppVersion}" 
-println "Author      : ${myAuthor}" 
+println "Application : ${myAppName} v${myAppVersion}"
+println "Description : ${myAppDescription}" 
+println "Author      : ${myAppAuthor}" 
 println "License     : ${myAppLicense}" 
 println "Time Stamp  : " + getCurrentTimestamp ()
 
@@ -47,9 +49,9 @@ println "Time Stamp  : " + getCurrentTimestamp ()
 jar {
     from { configurations.compile.collect { it.isDirectory() ? it : zipTree(it) } }
     manifest {
-        attributes 'Implementation-Title': 'JTSDK-Tools Environment Application',
-                   'Implementation-Version': version,
-                   'Main-Class': 'com.jtsdk.jtenv.cli.JTEnvJV'
+        attributes 'Implementation-Title': myAppDescription,
+                   'Implementation-Version': myAppVersion,
+                   'Main-Class': 'com.jtsdk.jtenv.cli.' + myAppName
     }
 }
 

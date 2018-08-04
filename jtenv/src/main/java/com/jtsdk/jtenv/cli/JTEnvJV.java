@@ -131,7 +131,7 @@ public class JTEnvJV {
 
 			// user list
 			if (line.hasOption("user")) {
-				mainHeader("User Environment variables");
+				mainHeader("User Environment Variables");
 				sectionHeader("User");
 				LoopArrayList(userList);
 				System.exit(0);
@@ -139,7 +139,7 @@ public class JTEnvJV {
 
 			// system list
 			if (line.hasOption("system")) {
-				mainHeader("System Environment variables");
+				mainHeader("System Environment Variables");
 				sectionHeader("System");
 				LoopArrayList(systemList);
 				System.exit(0);
@@ -147,7 +147,7 @@ public class JTEnvJV {
 
 			// jtsdk list
 			if (line.hasOption("jtsdk")) {
-				mainHeader("JTSDK Environment variables");
+				mainHeader("JTSDK Environment Variables");
 				sectionHeader("System");
 				LoopArrayList(jtsdkList);
 				System.exit(0);
@@ -203,7 +203,8 @@ public class JTEnvJV {
 
 		System.out.println("\nName        : " + APP_NAME);
 		System.out.println("Version     : " + APP_VERSION);
-		System.out.println("Description : " + message + "\n");
+		System.out.println("Description : " + message);
+		System.out.println("System      : " + System.getProperty("os.name") + "\n");
 
 	} // End - mainHeader()
 
