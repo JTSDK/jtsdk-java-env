@@ -203,7 +203,7 @@ public class JTEnvJV {
 
 		System.out.println("\nName        : " + APP_NAME);
 		System.out.println("Version     : " + APP_VERSION);
-		System.out.println("Description : " + message + "\n");
+		System.out.println("Description : " + message);
 		System.out.println("System      : " + System.getProperty("os.name") + "\n");
 
 	} // End - mainHeader()
