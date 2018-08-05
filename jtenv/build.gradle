@@ -36,7 +36,7 @@ plugins {
 }
 
 // Application Data and Console Messages
-mainClassName = "${myAppName}"
+mainClassName = "com.jtsdk.jtenv.cli.${myAppName}"
 version = "${myAppVersion}"
 println ''
 println "Application : ${myAppName} v${myAppVersion}"
