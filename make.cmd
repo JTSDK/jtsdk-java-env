@@ -23,6 +23,8 @@
 ::-----------------------------------------------------------------------------::
 @ECHO OFF
 
+SET appname=JTEnvJV
+
 :: Set the Git tag into a file
 >%JTSDK_HOME%\ver.git (
 git rev-parse --short HEAD
@@ -39,38 +41,35 @@ GOTO HELP
 :_CLEAN
 CLS
 ECHO ------------------------------
-ECHO  Clean JTSDK.NetCore
+ECHO  Clean %appname%
 ECHO ------------------------------
 ECHO.
-PUSHD %CD%\jtenv
-gradle clean
+PUSHD %CD%
+gradle clean && ECHO.
 POPD
+ECHO.
 GOTO EOF
 
 :_BUILD
 CLS
 ECHO ------------------------------
-ECHO  Building JTSDK.NetCore
+ECHO  Building %appname%
 ECHO ------------------------------
 ECHO.
-PUSHD %CD%\jtenv
-gradle build
+PUSHD %CD%
+gradle installDist && ECHO.
 POPD
 GOTO EOF
 
 :_INSTALL
 CLS
 ECHO -------------------------------------------
-ECHO  Installing JTSDK Net Core Applications
+ECHO  Installing %appname% Application
 ECHO -------------------------------------------
 ECHO.
-PUSHD %CD%\jtenv
-gradle installDist
-ECHO.
-POPD
 
-:: Change Directories to JTSDK.Win32
-PUSHD %CD%\jtenv\build\install
+:: Change Directories to : jtenv\build\install and copy files
+PUSHD %CD%\build\install
 ECHO   Installing JTEnvJV Application
 robocopy %CD%\ %JTSDK_HOME%\scripts\java /E /NFL /NDL /NJH /NJS /nc /ns /np
 POPD
@@ -85,15 +84,17 @@ GOTO EOF
 :_HELP
 CLS
 ECHO ------------------------------
-ECHO  JTSDK Make Help
+ECHO  %appname% Make Help
 ECHO ------------------------------
 ECHO.
 ECHO  The build script takes one option^:
 ECHO.
 ECHO    clean       :  clean the build tree
-ECHO    build       :  build source tree
+ECHO    build       :  build the application
+ECHO    build       :  install the application
 ECHO.
-ECHO    Example: 
+ECHO    Example:
+ECHO    make build
 ECHO    make install
 ECHO.
 GOTO EOF
@@ -124,6 +125,6 @@ ECHO.
 ECHO   D-Drive Location
 ECHO   set JTSDK_HOME=D:\JTSDK-Tools
 ECHO.
-ECHO   Then re-run your commands.   
+ECHO   Then re-run your commands.
 ECHO.
 exit /b 1
