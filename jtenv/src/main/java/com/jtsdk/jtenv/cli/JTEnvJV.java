@@ -5,13 +5,13 @@
  *
  * Usage: gradle installDist
  *        cd build\install\jtenv\lib
- *        java -jar jtenv-3.0.1.jar -h
+ *        java -jar jtenv-3.0.2.jar -h
  * 
  * Date: 7/22/2018
  * 
  * Author: Greg Beam, KI7MT <ki7mt@yahoo.com>
  * 
- * Version: 3.0.1
+ * Version: 3.0.2
  * 
  * License: GPL-3
  * 
@@ -35,7 +35,7 @@ import org.apache.commons.cli.ParseException;
 public class JTEnvJV {
 
 	private final static String APP_NAME = "JTEnvJV";
-	private final static String APP_VERSION = "3.0.1";
+	private final static String APP_VERSION = "3.0.2";
 
 	// Main Method
 	public static void main(String[] args) {
