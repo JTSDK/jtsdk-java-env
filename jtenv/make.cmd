@@ -71,7 +71,7 @@ ECHO.
 :: Change Directories to : jtenv\build\install and copy files
 PUSHD %CD%\build\install
 ECHO   Installing JTEnvJV Application
-robocopy %CD%\ %JTSDK_HOME%\scripts\java /E /NFL /NDL /NJH /NJS /nc /ns /np
+robocopy %CD%\ %JTSDK_HOME%\tools\scripts\java /E /NFL /NDL /NJH /NJS /nc /ns /np
 POPD
 
 :: Finished installation
@@ -91,7 +91,7 @@ ECHO  The build script takes one option^:
 ECHO.
 ECHO    clean       :  clean the build tree
 ECHO    build       :  build the application
-ECHO    build       :  install the application
+ECHO    install     :  install the application
 ECHO.
 ECHO    Example:
 ECHO    make build
