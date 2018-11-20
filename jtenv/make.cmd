@@ -72,10 +72,11 @@ ECHO.
 PUSHD %CD%\build\install
 ECHO   Installing JTEnvJV Application
 robocopy %CD%\ %JTSDK_HOME%\tools\scripts\java /E /NFL /NDL /NJH /NJS /nc /ns /np
-POPD
-
-:: Finished installation
+ECHO   Destination..: %JTSDK_HOME%\tools\scripts\java
+ECHO   Usage........: Type, jtenv^-jv ^-h
+ECHO.
 ECHO   Finished
+POPD
 GOTO EOF
 
 :: ----------------------------------------------------------------------------
